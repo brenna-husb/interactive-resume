@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brenna Mulvaney — Resume</title>
+<meta name="description" content="Brenna Mulvaney: localization expert with 10+ years of revenue-owning experience across AI/ML and localization SaaS." />
+<style>
+  :root {
+    --bg: #fdfdfc;
+    --surface: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --accent: #0e7490;
+    --accent-soft: #ecfeff;
+    --border: #e5e7eb;
+    --max: 880px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(253, 253, 252, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: var(--max); margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .brand { font-weight: 700; letter-spacing: 0.5px; color: var(--text); text-decoration: none; font-size: 15px; }
+  .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 14px;
+    padding: 6px 10px; border-radius: 6px; transition: all .2s ease;
+  }
+  .nav-links a:hover { color: var(--accent); background: var(--accent-soft); }
+  .nav-links a.active { color: var(--accent); font-weight: 600; }
+  .progress { height: 2px; background: var(--accent); width: 0%; transition: width .1s linear; }
+
+  /* ---------- Layout ---------- */
+  section { padding: 56px 20px; border-bottom: 1px solid var(--border); }
+  .wrap { max-width: var(--max); margin: 0 auto; }
+  h2 {
+    display: flex; align-items: baseline; gap: 14px;
+    font-size: 14px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid #111827;
+  }
+  h2 .num { font-size: 12px; color: var(--accent); letter-spacing: 1px; }
+  .tagline em { font-style: italic; color: var(--accent); font-weight: 600; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- Hero ---------- */
+  #top { border-bottom: none; padding-top: 80px; padding-bottom: 40px; text-align: left; }
+  h1 { font-size: clamp(40px, 7vw, 64px); letter-spacing: -1.5px; line-height: 1.02; font-weight: 800; }
+  #top .wrap::after {
+    content: ""; display: block; width: 64px; height: 4px; background: var(--accent);
+    margin-top: 24px; border-radius: 2px;
+  }
+  .tagline {
+    margin-top: 18px; font-size: clamp(16px, 2.2vw, 19px); color: #374151;
+    max-width: 720px; line-height: 1.55;
+  }
+  .tagline::first-line { font-weight: 600; color: var(--text); }
+  .hero-meta { margin-top: 18px; font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .hero-meta a { color: var(--accent); text-decoration: none; }
+  .hero-meta a:hover { text-decoration: underline; }
+
+  /* ---------- Experience ---------- */
+  .job { margin-bottom: 34px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .job-title { font-weight: 700; font-size: 16.5px; }
+  .job-company { color: var(--accent); font-weight: 600; }
+  .job-dates { font-size: 13.5px; color: var(--muted); white-space: nowrap; }
+  .job ul { margin: 10px 0 0 18px; }
+  .job li { margin-bottom: 6px; font-size: 15px; }
+  strong { color: #111827; }
+
+  /* ---------- Travel writing ---------- */
+  .pieces { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .piece {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .piece:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.06); }
+  .piece h3 { font-size: 15px; margin-bottom: 6px; }
+  .piece p { font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
+  .piece a { font-size: 13.5px; color: var(--accent); text-decoration: none; font-weight: 600; }
+  .piece a:hover { text-decoration: underline; }
+  .piece.placeholder { border-style: dashed; color: var(--muted); }
+
+  /* ---------- Skills ---------- */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .skill-group h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+    padding: 5px 14px; font-size: 13.5px; transition: all .2s ease; cursor: default;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+  /* ---------- Education ---------- */
+  .edu { margin-bottom: 16px; }
+  .edu h3 { font-size: 16px; }
+  .edu p { color: var(--muted); font-size: 14px; }
+
+  /* ---------- Contact ---------- */
+  #contact { border-bottom: none; }
+  .contact-card {
+    background: var(--accent-soft); border: 1px solid #cffafe; border-radius: 12px;
+    padding: 28px; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between;
+  }
+  .contact-card a.button {
+    background: var(--accent); color: #fff; text-decoration: none; font-weight: 600;
+    padding: 10px 20px; border-radius: 8px; font-size: 14px; transition: background .2s ease;
+  }
+  .contact-card a.button:hover { background: #155e75; }
+
+  footer { text-align: center; padding: 24px; font-size: 12.5px; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    .nav-inner { flex-direction: column; height: auto; padding: 10px 20px; gap: 6px; }
+    .nav-links { justify-content: center; }
+    html { scroll-padding-top: 110px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">BRENNA MULVANEY</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#experience">Experience</a>
+      <a href="#advisory">Consulting</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#writing">Travel Writing</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<section id="top">
+  <div class="wrap reveal">
+    <h1>Brenna Mulvaney</h1>
+    <p class="tagline">Turn a decade across borders and industries into your <em>measurable</em> advantage. Localization expert with 10+ years of revenue-owning experience across AI/ML and localization SaaS.</p>
+    <div class="hero-meta">
+      <span>📍 San Diego, CA (relocating Dec 2026)</span>
+      <a href="https://www.linkedin.com/in/brennamulvaney/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="num">01</span>Professional Experience</h2>
+
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Strategic Account Manager (Enterprise)</span> · <span class="job-company">Lokalise</span> · London, UK</div>
+        <div class="job-dates">Aug 2026 – Present</div>
+      </div>
+      <ul>
+        <li>Own renewals, upsell, and expansion across a <strong>$5M ARR enterprise portfolio</strong>, achieving <strong>100% of quota in Q4 2026</strong>.</li>
+        <li>Drive expansion revenue through strategic account plans and executive business reviews with midmarket and enterprise customers.</li>
+      </ul>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Enterprise Customer Success Manager</span> · <span class="job-company">Lokalise</span> · London, UK</div>
+        <div class="job-dates">Jan 2025 – Aug 2026</div>
+      </div>
+      <ul>
+        <li>Delivered <strong>120% NRR (net $275K expansion/renewal revenue) in year one</strong>, owning the full renewal and expansion motion for <strong>$2M+ in enterprise contracts</strong>.</li>
+        <li>Ran executive business reviews with EMEA's largest brands to secure multi-year renewals and position AI localization as a mission-critical capability.</li>
+        <li>Reduced churn risk across the book through structured success plans, adoption tracking, and executive stakeholder engagement.</li>
+      </ul>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Customer Success Manager</span> · <span class="job-company">LILT AI</span> · San Francisco, CA</div>
+        <div class="job-dates">Nov 2022 – Jun 2024</div>
+      </div>
+      <ul>
+        <li>Owned a <strong>$2M ARR portfolio of Fortune 500 accounts</strong>, achieving <strong>100% quota attainment in 2024</strong> on retention and expansion targets.</li>
+        <li>Drove <strong>$2M in ARR</strong> through product adoption: led user training, enablement, and quarterly business reviews aligned to customer business goals.</li>
+        <li>Grew a Fortune 500 ecommerce account <strong>2x</strong> by engaging executive stakeholders on ROI and distilling complex AI/ML capabilities into business value.</li>
+        <li>Influenced the product roadmap on behalf of customers, including ML-based translation-quality prediction, directly tied to adoption and renewal outcomes.</li>
+      </ul>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Senior Manager, Localization Strategy</span> · <span class="job-company">LILT AI</span> · San Francisco, CA</div>
+        <div class="job-dates">May 2021 – Oct 2022</div>
+      </div>
+      <ul>
+        <li>Managed a <strong>~$4M annual budget</strong> and led US operations to <strong>1.6x revenue growth</strong>; recognized with the company "Impact Award" (2021).</li>
+        <li>Scaled a global team from <strong>13 to 40</strong> program and project managers in 6 months, using Lever and 15Five for performance management.</li>
+        <li>Built global SLA and quality measurement systems (OTD, quality scorecards) from proprietary data, improving delivery predictability for enterprise customers.</li>
+      </ul>
+    </div>
+
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Director of Customer Solutions</span> · <span class="job-company">LSA</span> · Philadelphia, PA</div>
+        <div class="job-dates">Sep 2013 – Apr 2021</div>
+      </div>
+      <ul>
+        <li>Led program and account management for <strong>200+ accounts totaling $50M+ ARR</strong>, managing a team of <strong>30</strong> managers and individual contributors.</li>
+        <li>Built and led a strategic account management program; customer segmentation analysis raised <strong>retention to 99%</strong>.</li>
+        <li>Designed and rolled out a customer onboarding program (Salesforce), cutting <strong>operational expenses by 22%</strong> and reducing time-to-value.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="advisory">
+  <div class="wrap">
+    <h2><span class="num">02</span>Consulting & Advisory</h2>
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Subject Matter Expert, Localization</span> · <span class="job-company">Independent Consulting</span></div>
+        <div class="job-dates">Freelance</div>
+      </div>
+      <ul>
+        <li>Serve as a subject matter expert on localization and language AI for <strong>investment firms and Big Five consulting companies</strong>, advising on market landscape, technology evaluation, and due diligence.</li>
+        <li>Translate deep operational and enterprise AI/localization experience into strategic insight for M&A, investment, and advisory engagements.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="volunteering">
+  <div class="wrap">
+    <h2><span class="num">03</span>Volunteering</h2>
+    <div class="job reveal">
+      <div class="job-head">
+        <div><span class="job-title">Leader &amp; Mentor</span> · <span class="job-company">Women in Localization</span></div>
+      </div>
+      <ul>
+        <li>Serve in leadership and mentoring roles within Women in Localization, the largest non-profit professional community for women in the localization industry.</li>
+        <li>Mentor emerging professionals and contribute to community programming that supports career development and industry networking.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <h2><span class="num">04</span>Freelance Travel Writing</h2>
+    <p style="color: var(--muted); font-size: 15px; margin-bottom: 22px; max-width: 640px;">Alongside my customer success career, I write freelance travel pieces covering destinations, culture, and the experience of living between the US, UK, and Europe.</p>
+    <div class="pieces">
+      <div class="piece reveal">
+        <h3>A Beginner's Guide to Living in Naples, Italy</h3>
+        <p>A Way Abroad. A practical guide to daily life, cost of living, and what it's really like to settle in Naples.</p>
+        <a href="https://www.findawayabroad.com/post/living-in-naples-italy" target="_blank" rel="noopener">Read the piece →</a>
+      </div>
+      <div class="piece reveal">
+        <h3>Case Study: Parrot Bungalows</h3>
+        <p>Supernuclear. A case study of Parrot Bungalows and how its co-living community model works.</p>
+        <a href="https://supernuclear.substack.com/p/case-study-parrot-bungalows" target="_blank" rel="noopener">Read the piece →</a>
+      </div>
+      <div class="piece reveal">
+        <h3>Personal Substack</h3>
+        <p>Essays and dispatches on travel, living abroad, and building community.</p>
+        <a href="https://brenna.substack.com/" target="_blank" rel="noopener">Visit the newsletter →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="num">05</span>Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group reveal">
+        <h3>Revenue Ownership</h3>
+        <div class="chips">
+          <span class="chip">NRR</span><span class="chip">Renewals</span><span class="chip">Expansion</span>
+          <span class="chip">Churn Mitigation</span><span class="chip">Strategic Account Planning</span><span class="chip">EBRs / QBRs</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Domain & Leadership</h3>
+        <div class="chips">
+          <span class="chip">Enterprise AI/ML SaaS</span><span class="chip">Localization SaaS</span>
+          <span class="chip">Customer Onboarding & Adoption</span><span class="chip">Team Leadership (up to 40 globally)</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Tools</h3>
+        <div class="chips">
+          <span class="chip">Salesforce</span><span class="chip">Gong</span><span class="chip">Lever</span><span class="chip">RevenueHero</span><span class="chip">15Five</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Languages</h3>
+        <div class="chips">
+          <span class="chip">English (native)</span><span class="chip">French (C1)</span><span class="chip">Italian (B2)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2><span class="num">06</span>Education</h2>
+    <div class="edu reveal">
+      <h3>B.A., Political Science and French</h3>
+      <p>Catholic University of America, Washington, D.C.</p>
+    </div>
+    <div class="edu reveal">
+      <h3>Certificate, Economics for Managers</h3>
+      <p>Harvard Business School Online</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2><span class="num">07</span>Contact</h2>
+    <div class="contact-card reveal">
+      <div>
+        <div style="font-weight: 700;">Let's connect</div>
+        <div style="color: var(--muted); font-size: 14px;">Open to enterprise customer success roles and freelance writing opportunities.</div>
+        <div style="margin-top: 8px; font-size: 14px;"><a href="mailto:brenna@brennamulvaney.com" style="color: var(--accent); text-decoration: none; font-weight: 600;">brenna@brennamulvaney.com</a></div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a class="button" href="https://www.linkedin.com/in/brennamulvaney/" target="_blank" rel="noopener" style="background: #0e7490;">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Brenna Mulvaney · www.brennamulvaney.com</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav highlight + scroll progress
+  const links = Array.from(document.querySelectorAll('.nav-links a'));
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  const progress = document.getElementById('progress');
+  function onScroll() {
+    const y = window.scrollY + 120;
+    let idx = -1;
+    sections.forEach((s, i) => { if (s && s.offsetTop <= y) idx = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === idx));
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>
